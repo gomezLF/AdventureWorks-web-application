@@ -8,7 +8,7 @@
 		<version>2.6.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>co.edu.icesi</groupId>
+	<groupId>co.edu.icesi.adventureWorks</groupId>
 	<artifactId>AdventureWorks-web-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>AdventureWorks</name>
