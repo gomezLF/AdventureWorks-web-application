@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -88,6 +89,7 @@ public class Contact implements Serializable {
 	/**
 	 * E-mail addresses for the person.
 	 */
+	//bi-directional many-to-one association to EmailAddress.
 	@OneToMany(mappedBy = "contact")
 	private List<EmailAddress> emailAddresses;
 	
@@ -95,6 +97,7 @@ public class Contact implements Serializable {
 	/**
 	 * Phone number associated with the person.
 	 */
+	// bi-directional many-to-one association to Phone.
 	@OneToMany(mappedBy = "contact")
 	private List<Phone> phones;
 	
@@ -102,6 +105,8 @@ public class Contact implements Serializable {
 	/**
 	 * Password for the e-mail account.
 	 */
+	// bi-directional one-to-one association to Password.
+	@OneToOne(mappedBy = "contact")
 	private Password password;
 	
 	
