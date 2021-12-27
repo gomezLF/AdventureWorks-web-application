@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -84,12 +85,14 @@ public class Contact {
 	/**
 	 * E-mail addresses for the person.
 	 */
+	@OneToMany(mappedBy = "contact")
 	private List<EmailAddress> emailAddresses;
 	
 	
 	/**
 	 * Phone number associated with the person.
 	 */
+	@OneToMany(mappedBy = "contact")
 	private List<Phone> phones;
 	
 	
