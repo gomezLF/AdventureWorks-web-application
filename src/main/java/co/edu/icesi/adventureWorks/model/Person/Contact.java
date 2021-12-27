@@ -120,6 +120,14 @@ public class Contact implements Serializable {
 	
 	
 	
+	public EmailAddress addEmailAddress(EmailAddress emailaddress) {
+		
+	}
+	
+	public Phone addPhone(Phone phone) {
+		
+	}
+	
 	public Integer getContactID() {
 		return contactID;
 	}
