@@ -1,6 +1,7 @@
 package co.edu.icesi.adventureWorks.model.Person;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -100,7 +101,10 @@ public class Contact {
 	
 	
 	public Contact() {
+		setEmailAddresses(new ArrayList<EmailAddress>());
+		setPhones(new ArrayList<Phone>());
 		
+		setModifiedDate(LocalDateTime.now());
 	}
 	
 	
