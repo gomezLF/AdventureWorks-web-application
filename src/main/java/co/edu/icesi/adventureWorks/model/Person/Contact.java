@@ -1,5 +1,6 @@
 package co.edu.icesi.adventureWorks.model.Person;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,9 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 @NamedQuery(name = "Contact.findAll", query = "SELECT c FROM Contact c")
-public class Contact {
+public class Contact implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	/**
 	 * Primary key for Contact rows.
