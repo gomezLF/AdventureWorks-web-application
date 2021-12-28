@@ -3,9 +3,17 @@ package co.edu.icesi.adventureWorks.model.Person;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
+@Entity
+@NamedQuery(name = "Phone.findAll", query = "SELECT p FROM Phone p")
 public class Phone implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -13,6 +21,9 @@ public class Phone implements Serializable{
 	/**
 	 * Identifier of the telephone belonging to a contact.
 	 */
+	@Id
+	@SequenceGenerator(name = "PHONE_ID_GENERATOR", allocationSize = 1, sequenceName = "PHONE_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PHONE_ID_GENERATOR")
 	private Integer id;
 	
 	
