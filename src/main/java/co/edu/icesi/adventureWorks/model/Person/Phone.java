@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -43,7 +44,7 @@ public class Phone implements Serializable{
 	 * Contact to which the phone belongs.
 	 */
 	// bi-directional one-to-one association to Contact
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "contactID")
 	private Contact contact;
 	
