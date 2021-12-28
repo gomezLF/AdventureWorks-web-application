@@ -40,12 +40,6 @@ public class EmailAddress implements Serializable{
 	
 	
 	/**
-	 * ROWGUIDCOL number uniquely identifying the row. Used to support a merge replication sample.
-	 */
-	private Integer rowguid;
-	
-	
-	/**
 	 * Contact to which the e-mail address belongs.
 	 */
 	// bi-directional many-to-one association to Contact.
@@ -86,14 +80,6 @@ public class EmailAddress implements Serializable{
 	}
 	
 	/**
-	 * Returns a number uniquely identifying the row.
-	 * @return An Integer wich is a number uniquely identifying the row.
-	 */
-	public Integer getRowguid() {
-		return rowguid;
-	}
-	
-	/**
 	 * Returns the contact to which the e-mail address belongs.
 	 * @return A Contact to which the e-mail address belongs.
 	 */
@@ -125,14 +111,6 @@ public class EmailAddress implements Serializable{
 	 */
 	public void setModifieddate(LocalDateTime modifieddate) {
 		this.modifieddate = modifieddate;
-	}
-	
-	/**
-	 * Set current rowguid to a different one.
-	 * @param rowguid - the new rowguid.
-	 */
-	public void setRowguid(Integer rowguid) {
-		this.rowguid = rowguid;
 	}
 	
 	/**

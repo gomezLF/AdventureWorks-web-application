@@ -75,12 +75,6 @@ public class Contact implements Serializable {
 	
 	
 	/**
-	 * ROWGUIDCOL number uniquely identifying the row. Used to support a merge replication sample.
-	 */
-	private Integer rowguid;
-	
-	
-	/**
 	 * Date and time the row was last updated.
 	 */
 	private LocalDateTime modifiedDate;
@@ -166,10 +160,6 @@ public class Contact implements Serializable {
 		return nameStyle;
 	}
 	
-	public Integer getRowguid() {
-		return rowguid;
-	}
-	
 	public LocalDateTime getModifiedDate() {
 		return modifiedDate;
 	}
@@ -218,10 +208,6 @@ public class Contact implements Serializable {
 
 	public void setNameStyle(Integer nameStyle) {
 		this.nameStyle = nameStyle;
-	}
-	
-	public void setRowguid(Integer rowguid) {
-		this.rowguid = rowguid;
 	}
 	
 	public void setModifiedDate(LocalDateTime modifiedDate) {
