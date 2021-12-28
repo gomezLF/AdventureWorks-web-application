@@ -4,9 +4,13 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 @NamedQuery(name = "EmailAddress.findAll", query = "SELECT e FROM EmailAddress e")
@@ -17,6 +21,9 @@ public class EmailAddress implements Serializable{
 	/**
 	 * Identifier of the e-mail address in the contact to which it belongs.
 	 */
+	@Id
+	@SequenceGenerator(name = "EMAILADDRESS_ID_GENERATOR", allocationSize = 1, sequenceName = "EMAILADDRESSS_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EMAILADDRESS_ID_GENERATOR")
 	private Integer id;
 	
 	
