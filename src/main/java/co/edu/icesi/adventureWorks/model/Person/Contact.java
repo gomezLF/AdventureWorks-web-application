@@ -121,11 +121,17 @@ public class Contact implements Serializable {
 	
 	
 	public EmailAddress addEmailAddress(EmailAddress emailaddress) {
+		getEmailAddresses().add(emailaddress);
+		emailaddress.setContact(this);
 		
+		return emailaddress;
 	}
 	
 	public Phone addPhone(Phone phone) {
+		getPhones().add(phone);
+		phone.setContact(this);
 		
+		return phone;
 	}
 	
 	public Integer getContactID() {
