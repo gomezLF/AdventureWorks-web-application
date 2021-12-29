@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @NamedQuery(name = "Contact.findAll", query = "SELECT c FROM Contact c")
 public class Contact implements Serializable {
@@ -22,39 +25,52 @@ public class Contact implements Serializable {
 	
 	/**
 	 * Primary key for Contact rows.
+	 * 
 	 */
 	@Id
 	@SequenceGenerator(name = "CONTACT_CONTACTID_GENERATOR", allocationSize = 1, sequenceName = "CONTACT_SEQ")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONTACT_CONTACTID_GENERATOR")
+	@Getter
+	@Setter
 	private Integer contactID;
 	
 	/**
 	 * A courtesy title. For example, Mr. or Ms.
 	 */
+	@Getter
+	@Setter
 	private String title;
 	
 	
 	/**
 	 * First name of the person.
 	 */
+	@Getter
+	@Setter
 	private String firstName;
 	
 	
 	/**
 	 * Middle name or middle initial of the person.
 	 */
+	@Getter
+	@Setter
 	private String middleName;
 	
 	
 	/**
 	 * Last name of the person.
 	 */
+	@Getter
+	@Setter
 	private String lastName;
 	
 	
 	/**
 	 * Surname suffix. For example, Sr. or Jr.
 	 */
+	@Getter
+	@Setter
 	private String suffix;
 	
 	
@@ -62,6 +78,8 @@ public class Contact implements Serializable {
 	 * False = Contact does not wish to receive e-mail promotions.
 	 * True = Contact does wish to receive e-mail promotions.
 	 */
+	@Getter
+	@Setter
 	private Boolean emailPromotion;
 	
 	
@@ -71,12 +89,16 @@ public class Contact implements Serializable {
 	 * 0 = Family name is stored in LastName and the first name is stored in FirstName.
 	 * 1 = .Family name is stored in FirstName and the first name is stored in LastName.
 	 */
+	@Getter
+	@Setter
 	private Integer nameStyle;
 	
 	
 	/**
 	 * Date and time the row was last updated.
 	 */
+	@Getter
+	@Setter
 	private LocalDateTime modifiedDate;
 	
 	
@@ -85,6 +107,8 @@ public class Contact implements Serializable {
 	 */
 	//bi-directional many-to-one association to EmailAddress.
 	@OneToMany(mappedBy = "contact")
+	@Getter
+	@Setter
 	private List<EmailAddress> emailAddresses;
 	
 	
@@ -93,6 +117,8 @@ public class Contact implements Serializable {
 	 */
 	// bi-directional many-to-one association to Phone.
 	@OneToMany(mappedBy = "contact")
+	@Getter
+	@Setter
 	private List<Phone> phones;
 	
 	
@@ -113,7 +139,11 @@ public class Contact implements Serializable {
 	}
 	
 	
-	
+	/**
+	 * Adds an e-mail address, created prior to calling this function, to an e-mail list. It then returns the added address.
+	 * @param emailaddress - The e-mail address to be added.
+	 * @return The e-mail address added. 
+	 */
 	public EmailAddress addEmailAddress(EmailAddress emailaddress) {
 		getEmailAddresses().add(emailaddress);
 		emailaddress.setContact(this);
@@ -121,109 +151,17 @@ public class Contact implements Serializable {
 		return emailaddress;
 	}
 	
+	
+	/**
+	 * Adds a phone, created prior to calling this function, to a phone list. It then returns the added phone.
+	 * @param phone - The phone to be added.
+	 * @return The phone added. 
+	 */
 	public Phone addPhone(Phone phone) {
 		getPhones().add(phone);
 		phone.setContact(this);
 		
 		return phone;
-	}
-	
-	public Integer getContactID() {
-		return contactID;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getMiddleName() {
-		return middleName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public String getSuffix() {
-		return suffix;
-	}
-
-	public Boolean getEmailPromotion() {
-		return emailPromotion;
-	}
-
-	public Integer getNameStyle() {
-		return nameStyle;
-	}
-	
-	public LocalDateTime getModifiedDate() {
-		return modifiedDate;
-	}
-
-	public List<EmailAddress> getEmailAddresses() {
-		return emailAddresses;
-	}
-
-	public List<Phone> getPhones() {
-		return phones;
-	}
-
-	public Password getPassword() {
-		return password;
-	}
-
-
-
-	public void setContactID(Integer contactID) {
-		this.contactID = contactID;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public void setSuffix(String suffix) {
-		this.suffix = suffix;
-	}
-
-	public void setEmailPromotion(Boolean emailPromotion) {
-		this.emailPromotion = emailPromotion;
-	}
-
-	public void setNameStyle(Integer nameStyle) {
-		this.nameStyle = nameStyle;
-	}
-	
-	public void setModifiedDate(LocalDateTime modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
-
-	public void setEmailAddresses(List<EmailAddress> emailAddresses) {
-		this.emailAddresses = emailAddresses;
-	}
-
-	public void setPhones(List<Phone> phones) {
-		this.phones = phones;
-	}
-
-	public void setPassword(Password password) {
-		this.password = password;
 	}
 	
 	
