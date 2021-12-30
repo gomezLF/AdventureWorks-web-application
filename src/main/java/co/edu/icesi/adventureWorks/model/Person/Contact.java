@@ -163,8 +163,4 @@ public class Contact implements Serializable {
 		
 		return phone;
 	}
-	
-	
-	
-	
 }
