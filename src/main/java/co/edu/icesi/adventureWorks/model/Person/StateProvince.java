@@ -26,8 +26,8 @@ public class StateProvince implements Serializable{
 	 * Primary key for address rows.
 	 */
 	@Id
-	@SequenceGenerator(name = "ADDRESS_ADDRESSID_GENERATOR", allocationSize = 1, sequenceName = "ADDRESS_SEQ")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ADDRESS_ADDRESSID_GENERATOR")
+	@SequenceGenerator(name = "STATEPROVINCE_STATEPROVINCEID_GENERATOR", allocationSize = 1, sequenceName = "STATEPROVINCE_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "STATEPROVINCE_STATEPROVINCEID_GENERATOR")
 	@Getter
 	@Setter
 	private Integer stateProvinceID;
@@ -69,7 +69,7 @@ public class StateProvince implements Serializable{
 	 * Country or region code.
 	 */
 	@ManyToOne
-	@JoinColumn(name = "")
+	@JoinColumn(name = "countryRegionID")
 	@Getter
 	@Setter
 	private CountryRegion countryRegionCode;
