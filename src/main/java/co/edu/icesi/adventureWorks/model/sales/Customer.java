@@ -2,6 +2,7 @@ package co.edu.icesi.adventureWorks.model.sales;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import lombok.Getter;
@@ -65,6 +67,15 @@ public class Customer implements Serializable{
 	@Getter
 	@Setter
 	private SalesTerritory salesterritory;
+	
+	
+	/**
+	 * List of all sales order headers in which the customer appears.
+	 */
+	@OneToMany(mappedBy = "customer")
+	@Getter
+	@Setter
+	private List<SalesOrderHeader> salesOrderHeaders;
 	
 	
 	
