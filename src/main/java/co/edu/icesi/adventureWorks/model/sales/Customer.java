@@ -88,7 +88,7 @@ public class Customer implements Serializable{
 	
 	
 	/**
-	 * Adds a customer, created prior to calling this function, to a customer list. It then returns the customer added.
+	 * Adds a sales order header, created prior to calling this function, to a sales order header list. It then returns the sales order header added.
 	 * @param salesOrderHeader - The Sales order header to be added.
 	 * @return The Sales order header added.
 	 */
