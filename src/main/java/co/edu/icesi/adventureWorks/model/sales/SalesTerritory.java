@@ -14,6 +14,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import co.edu.icesi.adventureWorks.model.Person.StateProvince;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -109,10 +110,20 @@ public class SalesTerritory implements Serializable{
 	private List<SalesOrderHeader> salesOrderHeaders;
 	
 	
+	/**
+	 * List of state-provinces that are located in the territory
+	 */
+	@OneToMany(mappedBy = "salesterritory")
+	@Getter
+	@Setter
+	private List<StateProvince> stateProvinces;
+	
+	
 	
 	public SalesTerritory() {
 		setCustomers(new ArrayList<Customer>());
 		setSalesOrderHeaders(new ArrayList<SalesOrderHeader>());
+		setStateProvinces(new ArrayList<StateProvince>());
 		
 		setModdifiedDate(LocalDateTime.now());
 	}
@@ -142,5 +153,18 @@ public class SalesTerritory implements Serializable{
 		salesOrderHeader.setSalesTerritory(this);
 		
 		return salesOrderHeader;
+	}
+	
+	
+	/**
+	 * Adds a state-province, created prior to calling this function, to a state-province list. It then return the added state-province.
+	 * @param stateProvince - THe state-province to be added.
+	 * @return The state-province added.
+	 */
+	public StateProvince addStateProvince(StateProvince stateProvince) {
+		getStateProvinces().add(stateProvince);	
+		stateProvince.setSalesTerritory(this);
+		
+		return stateProvince;
 	}
 }
