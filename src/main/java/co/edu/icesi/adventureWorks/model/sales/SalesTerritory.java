@@ -100,9 +100,47 @@ public class SalesTerritory implements Serializable{
 	private List<Customer> customers;
 	
 	
+	/**
+	 * List of sales order headers that are located in the territory.
+	 */
+	@OneToMany(mappedBy = "salesterritory")
+	@Getter
+	@Setter
+	private List<SalesOrderHeader> salesOrderHeaders;
+	
+	
 	
 	public SalesTerritory() {
 		setCustomers(new ArrayList<Customer>());
+		setSalesOrderHeaders(new ArrayList<SalesOrderHeader>());
+		
 		setModdifiedDate(LocalDateTime.now());
+	}
+	
+	
+	
+	/**
+	 * Adds a customer, created prior to calling this function, to a customer list. It then returns the added customer.
+	 * @param customer - The customer to be added.
+	 * @return The customer added.
+	 */
+	public Customer addCustomer(Customer customer) {
+		getCustomers().add(customer);
+		customer.setSalesterritory(this);
+		
+		return customer;
+	}
+	
+	
+	/**
+	 * Adds a sales order header, created prior to calling this function, to a sales order header list. It then returns the sales order header added.
+	 * @param salesOrderHeader - The Sales order header to be added.
+	 * @return The Sales order header added.
+	 */
+	public SalesOrderHeader addSalesorderheader(SalesOrderHeader salesOrderHeader) {
+		getSalesOrderHeaders().add(salesOrderHeader);
+		salesOrderHeader.setSalesTerritory(this);
+		
+		return salesOrderHeader;
 	}
 }
