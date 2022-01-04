@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import co.edu.icesi.adventureWorks.model.sales.SalesOrderHeader;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -127,7 +128,18 @@ public class Contact implements Serializable {
 	 */
 	// bi-directional one-to-one association to Password.
 	@OneToOne(mappedBy = "contact")
+	@Getter
+	@Setter
 	private Password password;
+	
+	
+	/**
+	 * List of all the sales order headers where the current contact appears.
+	 */
+	@OneToMany(mappedBy = "contact")
+	@Getter
+	@Setter
+	private List<SalesOrderHeader> salesOrderHeaders;
 	
 	
 	
@@ -137,6 +149,7 @@ public class Contact implements Serializable {
 		
 		setModifiedDate(LocalDateTime.now());
 	}
+	
 	
 	
 	/**
@@ -162,5 +175,18 @@ public class Contact implements Serializable {
 		phone.setContact(this);
 		
 		return phone;
+	}
+	
+	
+	/**
+	 * Adds a sales order header, created prior to calling this function, to a sales order headers list. It then returns the added sales order header.
+	 * @param phone - The sales order header to be added.
+	 * @return The sales order header added. 
+	 */
+	public SalesOrderHeader addSalesorderheader(SalesOrderHeader salesOrderHeader) {
+		getSalesOrderHeaders().add(salesOrderHeader);
+		salesOrderHeader.setContact(this);
+		
+		return salesOrderHeader;
 	}
 }
