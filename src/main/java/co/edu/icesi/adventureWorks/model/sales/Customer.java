@@ -2,6 +2,7 @@ package co.edu.icesi.adventureWorks.model.sales;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -80,6 +81,7 @@ public class Customer implements Serializable{
 	
 	
 	public Customer() {
+		setSalesOrderHeaders(new ArrayList<SalesOrderHeader>());
 		setModifiedDate(LocalDateTime.now());
 	}
 	

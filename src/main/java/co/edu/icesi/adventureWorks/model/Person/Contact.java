@@ -146,6 +146,7 @@ public class Contact implements Serializable {
 	public Contact() {
 		setEmailAddresses(new ArrayList<EmailAddress>());
 		setPhones(new ArrayList<Phone>());
+		setSalesOrderHeaders(new ArrayList<SalesOrderHeader>());
 		
 		setModifiedDate(LocalDateTime.now());
 	}
