@@ -181,7 +181,7 @@ public class Contact implements Serializable {
 	
 	/**
 	 * Adds a sales order header, created prior to calling this function, to a sales order headers list. It then returns the added sales order header.
-	 * @param phone - The sales order header to be added.
+	 * @param salesOrderHeader - The sales order header to be added.
 	 * @return The sales order header added. 
 	 */
 	public SalesOrderHeader addSalesorderheader(SalesOrderHeader salesOrderHeader) {
