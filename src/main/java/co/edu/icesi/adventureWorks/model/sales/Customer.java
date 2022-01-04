@@ -82,4 +82,18 @@ public class Customer implements Serializable{
 	public Customer() {
 		setModifiedDate(LocalDateTime.now());
 	}
+	
+	
+	
+	/**
+	 * Adds a customer, created prior to calling this function, to a customer list. It then returns the customer added.
+	 * @param salesOrderHeader - The Sales order header to be added.
+	 * @return The Sales order header added.
+	 */
+	public SalesOrderHeader addSalesOrderHeader(SalesOrderHeader salesOrderHeader) {
+		getSalesOrderHeaders().add(salesOrderHeader);
+		salesOrderHeader.setCustomer(this);
+		
+		return salesOrderHeader;
+	}
 }
