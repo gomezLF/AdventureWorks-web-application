@@ -119,6 +119,15 @@ public class SalesTerritory implements Serializable{
 	private List<StateProvince> stateProvinces;
 	
 	
+	/**
+	 * List of sales persons that are located in the territory
+	 */
+	@OneToMany(mappedBy = "salesterritory")
+	@Getter
+	@Setter
+	private List<SalesPerson> salesPersons;
+	
+	
 	
 	public SalesTerritory() {
 		setCustomers(new ArrayList<Customer>());
@@ -166,5 +175,18 @@ public class SalesTerritory implements Serializable{
 		stateProvince.setSalesTerritory(this);
 		
 		return stateProvince;
+	}
+	
+	
+	/**
+	 * 
+	 * @param salesPerson
+	 * @return
+	 */
+	public SalesPerson addSalesPerson(SalesPerson salesPerson) {
+		getSalesPersons().add(salesPerson);
+		salesPerson.setSalesTerritory(this);
+		
+		return salesPerson;
 	}
 }
