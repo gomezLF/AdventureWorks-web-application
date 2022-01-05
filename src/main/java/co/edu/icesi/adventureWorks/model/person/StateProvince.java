@@ -1,4 +1,4 @@
-package co.edu.icesi.adventureWorks.model.Person;
+package co.edu.icesi.adventureWorks.model.person;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

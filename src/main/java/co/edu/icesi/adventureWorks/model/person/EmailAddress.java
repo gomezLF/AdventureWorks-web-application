@@ -1,4 +1,4 @@
-package co.edu.icesi.adventureWorks.model.Person;
+package co.edu.icesi.adventureWorks.model.person;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -16,32 +16,32 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@NamedQuery(name = "Phone.findAll", query = "SELECT p FROM Phone p")
-public class Phone implements Serializable{
+@NamedQuery(name = "EmailAddress.findAll", query = "SELECT e FROM EmailAddress e")
+public class EmailAddress implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * Identifier of the telephone belonging to a contact.
+	 * Identifier of the e-mail address in the contact to which it belongs.
 	 */
 	@Id
-	@SequenceGenerator(name = "PHONE_ID_GENERATOR", allocationSize = 1, sequenceName = "PHONE_SEQ")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PHONE_ID_GENERATOR")
+	@SequenceGenerator(name = "EMAILADDRESS_ID_GENERATOR", allocationSize = 1, sequenceName = "EMAILADDRESSS_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EMAILADDRESS_ID_GENERATOR")
 	@Getter
 	@Setter
 	private Integer id;
 	
 	
 	/**
-	 * Contact's phone number.
+	 * E-mail address for the contact.
 	 */
 	@Getter
 	@Setter
-	private String phoneNumber;
+	private String emailaddress;
 	
 	
 	/**
-	 * Last date on which the phone was modified.
+	 * Date and time the e-mail address was last updated.
 	 */
 	@Getter
 	@Setter
@@ -49,9 +49,9 @@ public class Phone implements Serializable{
 	
 	
 	/**
-	 * Contact to which the phone belongs.
+	 * Contact to which the e-mail address belongs.
 	 */
-	// bi-directional one-to-one association to Contact
+	// bi-directional many-to-one association to Contact.
 	@ManyToOne
 	@JoinColumn(name = "contactID")
 	@Getter
@@ -60,7 +60,8 @@ public class Phone implements Serializable{
 	
 	
 	
-	public Phone() {
+	public EmailAddress() {
 		setModifieddate(LocalDateTime.now());
 	}
+	
 }

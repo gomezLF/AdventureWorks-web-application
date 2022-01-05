@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 
-import co.edu.icesi.adventureWorks.model.Person.Contact;
+import co.edu.icesi.adventureWorks.model.person.Contact;
 import lombok.Getter;
 import lombok.Setter;
 

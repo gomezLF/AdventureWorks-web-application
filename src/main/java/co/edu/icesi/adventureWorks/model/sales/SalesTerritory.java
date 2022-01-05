@@ -14,7 +14,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import co.edu.icesi.adventureWorks.model.Person.StateProvince;
+import co.edu.icesi.adventureWorks.model.person.StateProvince;
 import lombok.Getter;
 import lombok.Setter;
 
