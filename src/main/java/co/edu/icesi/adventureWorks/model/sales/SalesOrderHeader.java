@@ -8,10 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 
-import co.edu.icesi.adventureWorks.model.Person.Contact;
+import co.edu.icesi.adventureWorks.model.person.Address;
+import co.edu.icesi.adventureWorks.model.person.Contact;
+import co.edu.icesi.adventureWorks.model.purchasing.ShipMethod;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -164,6 +168,8 @@ public class SalesOrderHeader implements Serializable{
 	/**
 	 * Customer identification.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "customerID")
 	@Getter
 	@Setter
 	 private Customer customer;
@@ -172,22 +178,28 @@ public class SalesOrderHeader implements Serializable{
 	/**
 	 * Customer contact identification.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "contactID")
 	@Getter
 	@Setter
 	 private Contact contact;
-
+	
 	
 	/**
 	 * Sales person who created the sales order.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "salesPersonID")
 	@Getter
 	@Setter
-	 private Salesperson salesperson;
+	 private SalesPerson salesperson;
 
 	
 	/**
 	 * Territory in which the sale was made.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "territoryID")
 	@Getter
 	@Setter
 	 private SalesTerritory salesTerritory;
@@ -196,6 +208,8 @@ public class SalesOrderHeader implements Serializable{
 	/**
 	 * Customer billing address.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "addressID")
 	@Getter
 	@Setter
 	 private Address billToAddress;
@@ -204,6 +218,8 @@ public class SalesOrderHeader implements Serializable{
 	/**
 	 * Customer shipping address.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "addressID")
 	@Getter
 	@Setter
 	 private Address shipToAddress;
@@ -212,6 +228,8 @@ public class SalesOrderHeader implements Serializable{
 	/**
 	 * Shipping method.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "shipMethodID")
 	@Getter
 	@Setter
 	 private ShipMethod shipMethod;
@@ -220,14 +238,18 @@ public class SalesOrderHeader implements Serializable{
 	/**
 	 * Credit card identification.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "creditCardID")
 	@Getter
 	@Setter
-	 private Creditcard creditcard;
-
+	 private CreditCard creditcard;
+	
 	
 	/**
 	 * Currency exchange rate used.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "currencyRateID")
 	@Getter
 	@Setter
 	 private CurrencyRate currencyRate;
