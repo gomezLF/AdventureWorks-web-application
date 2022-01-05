@@ -179,9 +179,9 @@ public class SalesTerritory implements Serializable{
 	
 	
 	/**
-	 * 
-	 * @param salesPerson
-	 * @return
+	 * Adds a sales person, created prior to calling this function, to a sales person list. It then return the added sales person.
+	 * @param salesPerson - The sales person to be added.
+	 * @return The sales person added.
 	 */
 	public SalesPerson addSalesPerson(SalesPerson salesPerson) {
 		getSalesPersons().add(salesPerson);
