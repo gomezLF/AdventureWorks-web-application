@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 
+import co.edu.icesi.adventureWorks.model.production.Product;
 import lombok.Setter;
 
 import lombok.Getter;
@@ -97,6 +98,8 @@ public class SalesOrderDetail implements Serializable{
 	/**
 	 * Product sold to customer.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "productID")
 	@Getter
 	@Setter
 	private Product product;
