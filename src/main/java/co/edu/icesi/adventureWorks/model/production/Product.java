@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -199,6 +201,8 @@ public class Product implements Serializable{
 	/**
 	 * Product is a member of this product subcategory.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "productSubcategoryID")
 	@Getter
 	@Setter
 	private ProductSubCategory productSubCategory;
