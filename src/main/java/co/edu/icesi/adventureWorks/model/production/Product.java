@@ -211,6 +211,8 @@ public class Product implements Serializable{
 	/**
 	 * Product is a member of this product model.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "productModelID")
 	@Getter
 	@Setter
 	private ProductModel productModel;
