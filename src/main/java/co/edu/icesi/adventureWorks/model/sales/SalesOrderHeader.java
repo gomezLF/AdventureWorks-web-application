@@ -3,6 +3,10 @@ package co.edu.icesi.adventureWorks.model.sales;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import co.edu.icesi.adventureWorks.model.person.Address;
@@ -24,6 +29,7 @@ import lombok.Setter;
 public class SalesOrderHeader implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
 	
 	/**
 	 * Primary key for SalesOrderHeader rows.
@@ -255,8 +261,18 @@ public class SalesOrderHeader implements Serializable{
 	 private CurrencyRate currencyRate;
 	
 	
+	/**
+	 * List of all product sales details.
+	 */
+	@OneToMany(mappedBy = "salesorderheader")
+	@Getter
+	@Setter
+	private List<SalesOrderDetail> salesOrderDetails;
+	
+	
 	
 	public SalesOrderHeader() {
+		setSalesOrderDetails(new ArrayList<SalesOrderDetail>());
 		setModifiedDate(LocalDateTime.now());
 	}
 	
