@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -27,8 +29,8 @@ public class ProductSubCategory implements Serializable{
 	 * Primary key for ProductSubcategory rows.
 	 */
 	@Id
-	@SequenceGenerator(name = "PRODUCTSUBCATEGORY_PRODUCTID_GENERATOR", allocationSize = 1, sequenceName = "PRODUCTSUBCATEGORY_SEQ")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCTSUBCATEGORY_PRODUCTID_GENERATOR")
+	@SequenceGenerator(name = "PRODUCTSUBCATEGORY_PRODUCTSUBCATEGORYID_GENERATOR", allocationSize = 1, sequenceName = "PRODUCTSUBCATEGORY_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCTSUBCATEGORY_PRODUCTSUBCATEGORYID_GENERATOR")
 	@Getter
 	@Setter
 	private Integer productSubcategoryID;
@@ -53,6 +55,8 @@ public class ProductSubCategory implements Serializable{
 	/**
 	 * Product category to which this subcategory belongs.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "productCategoryID")
 	@Getter
 	@Setter
 	private ProductCategory productCategory;
