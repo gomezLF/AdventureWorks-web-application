@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 
@@ -85,6 +87,8 @@ public class SalesOrderDetail implements Serializable{
 	/**
 	 * Sales header to which the sales details belong.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "salesOrderID")
 	@Getter
 	@Setter
 	private SalesOrderHeader salesOrderHeader;
