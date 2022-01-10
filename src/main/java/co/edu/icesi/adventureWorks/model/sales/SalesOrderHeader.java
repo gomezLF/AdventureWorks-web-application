@@ -276,4 +276,18 @@ public class SalesOrderHeader implements Serializable{
 		setModifiedDate(LocalDateTime.now());
 	}
 	
+	
+	
+	/**
+	 * Adds a sales order detail, created prior to calling this function, to a sales order details list. It then returns the added sales order detail.
+	 * @param salesOrderDetail - The sales order detail to be added.
+	 * @return The sales order detail added. 
+	 */
+	public SalesOrderDetail addSalesOrderDetail(SalesOrderDetail salesOrderDetail) {
+		getSalesOrderDetails().add(salesOrderDetail);
+		salesOrderDetail.setSalesOrderHeader(this);
+		
+		return salesOrderDetail;
+	}
+	
 }
