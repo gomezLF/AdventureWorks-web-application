@@ -9,12 +9,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import co.edu.icesi.adventureWorks.model.sales.SalesOrderHeader;
+import co.edu.icesi.adventureWorks.model.sales.StoreContact;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -140,6 +143,16 @@ public class Contact implements Serializable {
 	@Getter
 	@Setter
 	private List<SalesOrderHeader> salesOrderHeaders;
+	
+	
+	/**
+	 * Store where the current contact works.
+	 */
+	@ManyToOne
+	@JoinColumn(name = "storeContactID")
+	@Getter
+	@Setter
+	private StoreContact storeContact;
 	
 	
 	
