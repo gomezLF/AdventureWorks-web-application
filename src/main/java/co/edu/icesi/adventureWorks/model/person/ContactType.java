@@ -1,4 +1,4 @@
-package co.edu.icesi.adventureWorks.model.sales;
+package co.edu.icesi.adventureWorks.model.person;
 
 public enum ContactType {
 	OWNER,

@@ -11,6 +11,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 
 import co.edu.icesi.adventureWorks.model.person.Contact;
+import co.edu.icesi.adventureWorks.model.person.ContactType;
 import lombok.Getter;
 import lombok.Setter;
 
