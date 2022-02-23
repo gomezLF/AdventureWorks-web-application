@@ -2,12 +2,17 @@ package co.edu.icesi.adventureWorks.model.sales;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import co.edu.icesi.adventureWorks.model.person.Contact;
@@ -50,18 +55,42 @@ public class StoreContact implements Serializable{
 	
 	
 	/**
-	 * 
+	 * Store or individual who did business with Adventure Works representative.
 	 */
+	@OneToOne
+	@JoinColumn(name = "customerID")
 	@Getter
 	@Setter
 	private Customer customer;
 	
 	
 	/**
-	 * Contact, the store employee.
+	 * Contact, the store employees.
 	 */
+	@OneToMany(mappedBy = "storeContact")
 	@Getter
 	@Setter
-	private Contact contact;
+	private List<Contact> contacts;
+	
+	
+	
+	public StoreContact() {
+		setContacts(new ArrayList<Contact>());
+		setModifiedDate(LocalDate.now());
+	}
+	
+	
+	
+	/**}
+	 * Adds a contact, created prior to calling this function, to the contacts list. It then returns contact added.
+	 * @param contact - The contact to be added.
+	 * @return The contact added.
+	 */
+	public Contact addContact(Contact contact) {
+		getContacts().add(contact);
+		contact.setStoreContact(this);
+		
+		return contact;
+	}
 	
 }
