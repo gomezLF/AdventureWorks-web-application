@@ -24,7 +24,7 @@ public class ProductModel implements Serializable{
 	
 	
 	/**
-	 * 
+	 * Primary key for ProductModel rows.
 	 */
 	@Id
 	@SequenceGenerator(name = "PRODUCTMODEL_PRODUCTMODELID_GENERATOR", allocationSize = 1, sequenceName = "PRODUCTMODEL_SEQ")
@@ -35,7 +35,7 @@ public class ProductModel implements Serializable{
 	
 	
 	/**
-	 * 
+	 * Product model description.
 	 */
 	@Getter
 	@Setter
@@ -43,7 +43,7 @@ public class ProductModel implements Serializable{
 
 	
 	/**
-	 * 
+	 * Detailed product catalog information
 	 */
 	@Getter
 	@Setter
@@ -51,7 +51,7 @@ public class ProductModel implements Serializable{
 
 	
 	/**
-	 * 
+	 * Manufacturing instructions
 	 */
 	@Getter
 	@Setter
@@ -59,7 +59,7 @@ public class ProductModel implements Serializable{
 
 	
 	/**
-	 * 
+	 * Date the product model was last updated.
 	 */
 	@Getter
 	@Setter
@@ -67,7 +67,7 @@ public class ProductModel implements Serializable{
 
 	
 	/**
-	 * 
+	 * Products to which the current model corresponds.
 	 */
 	@OneToMany(mappedBy = "productmodel")
 	@Getter
