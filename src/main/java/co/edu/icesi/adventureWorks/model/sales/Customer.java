@@ -92,6 +92,7 @@ public class Customer implements Serializable{
 	
 	public Customer() {
 		setSalesOrderHeaders(new ArrayList<SalesOrderHeader>());
+		setStores(new ArrayList<Store>());
 		setModifiedDate(LocalDateTime.now());
 	}
 	
