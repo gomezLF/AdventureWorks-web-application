@@ -69,7 +69,7 @@ public class Store implements Serializable{
 	/**
 	 * Adventure Works sales representative responsible for selling products to the store.
 	 */
-	@OneToMany(mappedBy = "store")
+	@ManyToMany(mappedBy = "stores")
 	@Getter
 	@Setter
 	private List<SalesPerson> salesPersons;
@@ -104,7 +104,7 @@ public class Store implements Serializable{
 	 */
 	public SalesPerson addSalesPerson(SalesPerson salesPerson) {
 		getSalesPersons().add(salesPerson);
-		salesPerson.setStore(this);
+		salesPerson.getStores().add(this);
 		
 		return salesPerson;
 	}
