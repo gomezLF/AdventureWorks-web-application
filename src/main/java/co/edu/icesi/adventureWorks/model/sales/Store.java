@@ -58,7 +58,7 @@ public class Store implements Serializable{
 	
 	
 	/**
-	 * Customers who have purchased from the store.
+	 * Customers who have purchased Adventure Works products.
 	 */
 	@ManyToMany(mappedBy = "stores")
 	@Getter
