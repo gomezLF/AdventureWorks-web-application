@@ -104,6 +104,16 @@ public class SalesPerson implements Serializable{
 	private SalesTerritory salesTerritory;
 	
 	
+	/**
+	 * Store where the salesperson works
+	 */
+	@ManyToOne
+	@JoinColumn(name = "storeID")
+	@Getter
+	@Setter
+	private Store store;
+	
+	
 	
 	public SalesPerson() {
 		setSalesOrderHeaders(new ArrayList<SalesOrderHeader>());
