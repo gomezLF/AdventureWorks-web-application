@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import lombok.Getter;
@@ -88,6 +89,14 @@ public class Customer implements Serializable{
 	@Setter
 	private List<Store> stores;
 	
+	
+	/**
+	 * 
+	 */
+	@OneToOne(mappedBy = "customer")
+	@Getter
+	@Setter
+	private StoreContact storeContact;
 	
 	
 	public Customer() {
