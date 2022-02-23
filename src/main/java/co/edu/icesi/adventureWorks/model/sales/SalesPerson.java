@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -105,18 +106,18 @@ public class SalesPerson implements Serializable{
 	
 	
 	/**
-	 * Store where the salesperson works
+	 * Stores to which the sales person has sold products.
 	 */
-	@ManyToOne
-	@JoinColumn(name = "storeID")
+	@ManyToMany(mappedBy = "salesPersons")
 	@Getter
 	@Setter
-	private Store store;
+	private List<Store> stores;
 	
 	
 	
 	public SalesPerson() {
 		setSalesOrderHeaders(new ArrayList<SalesOrderHeader>());
+		setStores(new ArrayList<Store>());
 		setModifiedDate(LocalDateTime.now());
 	}
 	
