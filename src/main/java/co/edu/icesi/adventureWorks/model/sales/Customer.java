@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -77,6 +78,15 @@ public class Customer implements Serializable{
 	@Getter
 	@Setter
 	private List<SalesOrderHeader> salesOrderHeaders;
+	
+	
+	/**
+	 * Stores in which the current customer has purchased.
+	 */
+	@ManyToMany(mappedBy = "customers")
+	@Getter
+	@Setter
+	private List<Store> stores;
 	
 	
 	
